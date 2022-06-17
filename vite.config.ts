@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src') // 设置 @ 指向 scr 目录
+      '@': path.resolve(__dirname, 'src') // 设置 @ 指向 src 目录
     }
   },
   base: './', // 设置打包路径
