@@ -1,4 +1,4 @@
-import { ObjectDirective } from 'vue'
+import { ObjectDirective, App } from 'vue'
 import clickOutside from './clickOutside'
 
 interface DirectivesConfig {
@@ -10,9 +10,9 @@ const directives: DirectivesConfig = {
 }
 
 export default {
-  install(Vue: any) {
+  install(app: App) {
     Object.keys(directives).forEach(key => {
-      Vue.directive(key, directives[key])
+      app.directive(key, directives[key])
     })
   }
 }
