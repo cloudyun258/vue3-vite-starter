@@ -1,0 +1,7 @@
+public
+dist
+build
+tests
+themes
+node_modules
+src/common/libs

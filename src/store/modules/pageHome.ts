@@ -15,7 +15,7 @@ export const homePage: Module<IHomeState, IRootState> = {
 
   },
   mutations: {
-    
+
   },
   getters: {
 

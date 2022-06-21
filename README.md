@@ -248,7 +248,73 @@ trim_trailing_whitespace = false
 
 
 
+**集成 ESLint 配置**
 
+​	ESLint 是一款用于查找并报告代码中问题的工具，并且支持部分问题自动修复。VSCode 使用 ESLint 配置文件需要下载插件 **ESLint**。
 
+VSCode 设置里配置报错时格式化代码
 
+```json
+"eslint.autoFixOnSave": true,  //  启用保存时自动修复，默认只支持.js文件
+"eslint.validate": [
+    "javascript",  //  用 eslint 的规则检测 js 文件
+    {
+        "language": "vue",   // 检测vue文件
+        "autoFix": true   //  为vue文件开启保存自动修复的功能
+    },
+    {
+        "language": "html",
+        "autoFix": true
+    }
+],
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+}
+"eslint.rules.customizations": []
+```
+
+依赖安装
+
+```bash
+# http://eslint.cn
+
+1、安装 ESLint
+   npm i eslint -D
+
+2、支持 vue 项目
+   npm i eslint-plugin-vue -D
+
+3、支持 ts
+   npm i @typescript-eslint/eslint-plugin -D
+   npm i @typescript-eslint/parser -D
+
+4、支持 es6 模块化
+   npm i eslint-plugin-import -D
+
+5、支持 defineConfig 函数形式定义配置，可以帮助我们做语法提示
+   npm i eslint-define-config -D
+
+6、引入社区流行的 eslint 规则库
+   npm i eslint-config-standard -D
+
+一键安装： npm i eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-import eslint-define-config eslint-config-standard -D
+
+如果使用了 eslint-config-standard 了这个规则库，eslint 不生效的话，还需要安装：
+  npm i eslint-plugin-promise eslint-plugin-n -D
+```
+
+在项目根目录下创建 `.eslintrc.js` 和 `.eslintignore`文件，vue 项目常用配置如下：
+
+```bash
+.eslintignore
+    public
+    dist
+    build
+    tests
+    themes
+    node_modules
+    src/common/libs
+
+.eslintrc.js 详细配置查看项目内文件
+```
 
