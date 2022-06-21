@@ -1,10 +1,10 @@
 # https://editorconfig.org
 # 有些配置是默认生效，有些是保存时才生效，有些需要手动格式化：shift + alt + f
-[*.{js,jsx,ts,tsx,vue}] # 适用的文件类型
+[*.{js,jsx,ts,tsx,vue}]
 charset = utf-8 # 设置文件字符集为 utf-8
 indent_style = space # 缩进风格（tab | space）
 indent_size = 2 # 缩进大小
 end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
 trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
-max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效）
+# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 prettier 来配置）
