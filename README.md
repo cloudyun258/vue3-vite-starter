@@ -422,5 +422,41 @@ VSCode 设置里配置报错时格式化代码
 3、修改 .husky/pre-commit hook 的触发命令为：npx lint-staged
 ```
 
-至此，husky 和 lint-staged 组合配置完成
+​	`git commit`时触发 `pre-commit` 钩子，会运行 `lint-staged` 命令，对提交到暂存区的相应文件执行 eslint 的检查和修复命令。至此，husky 和 lint-staged 组合配置完成
+
+
+
+
+
+### 提交规范
+
+​	如果 `git commit` 的描述信息友好，在后期维护和 Bug 处理时会变得有据可查，项目开发周期内还可以根据规范的提交信息快速生成开发日志，从而方便我们追踪项目和把控进度。
+
+统一提交信息格式为：type: 描述信息
+
+| type值   | 描述                                                   |
+| -------- | ------------------------------------------------------ |
+| feat     | 新增一个功能                                           |
+| fix      | 修复一个 Bug                                           |
+| docs     | 文档变更                                               |
+| style    | 代码格式（不影响功能，例如空格、分号等格式修正）       |
+| refactor | 代码重构                                               |
+| test     | 测试                                                   |
+| ci       | 更改持续集成软件的配置文件和 package 中的 scripts 命令 |
+| revert   | 代码回退                                               |
+| perf     | 改善性能                                               |
+| build    | 变更项目构建或外部依赖                                 |
+| chore    | 变更构建流程或辅助工具                                 |
+
+
+
+**集成 commitizen 实现规范提交**
+
+```bash
+1、安装依赖工具
+  npm i @commitlint/config-conventional @commitlint/cli -D
+  
+2、项目根目录下新建 .commitlintrc.js 配置文件
+   
+```
 
