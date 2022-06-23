@@ -160,22 +160,23 @@ npm i sass -D
 
 使用 **EditorConfig + Prettier + ESLint** 组合来实现代码规范化
 
-这三者的配置常常会发生冲突，为了避免出现相同的配置导致冲突，我们先来明确一下 **各司其职** 的原则：
+这三者的配置常常会发生冲突，为了避免出现相同的配置导致冲突，我们先来明确一下**各司其职**的原则：
 
-- **EditorConfig** 将负责统一各种编辑器的配置，所有和编辑器相关的配置都交给它
-- **Prettier** 作为 **代码格式化** 工具
-- 其余的，也就是 **代码质量** 方面的语法检查，用 **ESLint** 来做
+- **EditorConfig** 负责统一各种编辑器的配置，所有和编辑器相关的配置都交给它
+- **Prettier** 作为 **代码外观上** 的格式化工具
+- 其余的，也就是 **代码逻辑和质量上** 的语法检查，用 **ESLint** 来做
 
 
 
 **集成 EditorConfig 配置**
 
-​	EditorConfig 有助于为不同 IDE 编辑器上处理同一项目的多个开发人员维护一致的编码风格。VSCode 使用 EditorConfig 需要下载插件 **EditorConfig for VS Code** 。
+​	EditorConfig 有助于为不同编辑器上处理同一项目的多个开发人员维护一致的编码风格。VSCode 使用 EditorConfig 需要下载插件 **EditorConfig for VS Code** 。
 
 在项目根目录下增加 `.editorconfig` 文件，vue 项目常用配置如下：
 
 ```bash
 # https://editorconfig.org
+
 [*.{js,jsx,ts,tsx,vue}]
 charset = utf-8 # 设置文件字符集为 utf-8
 indent_style = space # 缩进风格（tab | space）
@@ -183,16 +184,16 @@ indent_size = 2 # 缩进大小
 end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
 trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
-# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好是用 prettier 来配置）
+# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 prettier 来配置）
 
 
 1、不需要修改 EditorConfig for VS Code 插件的配置，用默认就行
 2、有些配置是默认生效，有些是保存时才生效，有些需要手动格式化：shift + alt + f
-3、配置在当前项目中默认会覆盖编辑器自带的配置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
+3、配置在当前项目中会覆盖编辑器自带的配置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
 
 
 
-还有一个较常用的配置：
+还有一套较常用的配置：
 root = true
 
 [*]
@@ -213,7 +214,7 @@ trim_trailing_whitespace = false
 
 **集成 Prettier 配置**
 
-​	Prettier 是一款强大的代码格式化工具，支持多种格式的配置文件，比如 `.json`、`.yml`、`.yaml`、`.js`等，VSCode 使用 Prettier 配置需要下载插件 **Prettier - Code formatter** 。
+​	Prettier 是一款强大的代码格式化工具，支持多种格式的配置文件，比如 `.json`、`.yml`、`.yaml`、`.js`等。VSCode 使用 Prettier 需要下载插件 **Prettier - Code formatter** 。
 
 在项目根目录下创建 `.prettierrc.js` 文件，vue 项目常用配置如下：
 
@@ -234,11 +235,34 @@ trim_trailing_whitespace = false
     // 或先在 package.json 里配置 script  "prettier": "npx prettier --write ."
     npm run prettier
     // 或保存时自动格式化
-    ......
+    ...... 这里使用这种形式
     
-    
-1、可以在 vscode 设置里配置保存的时候默认使用 Prettier 来格式化代码（我这里没启用）
+  
+
+1、可以在 vscode 设置里配置保存的时候默认使用 Prettier 来格式化代码
   参考：https://blog.csdn.net/bianliuzhu/article/details/123667127
+    "editor.formatOnSave": true,
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 
 2、VSCode 设置里也可以配置 Prettier，但如果项目里有配置文件，VSCode里的配置会被覆盖，优先用配置文件的
 
@@ -255,22 +279,22 @@ trim_trailing_whitespace = false
 VSCode 设置里配置报错时格式化代码
 
 ```json
-"eslint.autoFixOnSave": true,  //  启用保存时自动修复，默认只支持.js文件
+"eslint.autoFixOnSave": true,  // 启用保存时自动修复，默认只支持.js文件
 "eslint.validate": [
-    "javascript",  //  用 eslint 的规则检测 js 文件
+    "javascript",  // 用 eslint 的规则检测 js 文件
     {
         "language": "vue",   // 检测vue文件
-        "autoFix": true   //  为vue文件开启保存自动修复的功能
+        "autoFix": true   // 为vue文件开启保存自动修复的功能
     },
     {
         "language": "html",
         "autoFix": true
     }
 ],
+"eslint.rules.customizations": []
 "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
 }
-"eslint.rules.customizations": []
 ```
 
 依赖安装
@@ -316,5 +340,24 @@ VSCode 设置里配置报错时格式化代码
     src/common/libs
 
 .eslintrc.js 详细配置查看项目内文件
+```
+
+
+
+**解决 Prettier 和 ESLint 的冲突**
+
+​	通常会在项目中同时使用 ESLint 和 Prettier 来保证代码规范，难免会存在规则冲突的情况。解决两者冲突问题，需要用到 **eslint-plugin-prettier** 和 **eslint-config-prettier**。
+
+- `eslint-plugin-prettier` 将 Prettier 的规则设置到 ESLint 的规则中
+- `eslint-config-prettier` 关闭 ESLint 中与 Prettier 中会发生冲突的规则
+
+最后形成优先级，当有相同的配置项时：`Prettier 配置规则` > `ESLint 配置规则`
+
+```javascript
+ // 启用的规则，添加 plugin:prettier/recommended 规则，这样就会覆盖 eslint 中相同的规则
+ extends: ['plugin:vue/vue3-recommended', 'standard', 'plugin:prettier/recommended']
+
+ 但是，这种方式并不是使用的项目内 .prettierrc.js 文件内的配置来覆盖，而是使用的第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
+ 最终，决定不使用这种办法，而是选择了把两者相同的配置项的值都改成一样的，这样就不会有冲突了
 ```
 

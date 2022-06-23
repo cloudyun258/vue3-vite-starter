@@ -18,10 +18,7 @@ module.exports = defineConfig({
     getCurrentPages: true
   },
   // 启用的规则
-  extends: [
-    'plugin:vue/vue3-recommended',
-    'standard'
-  ],
+  extends: ['plugin:vue/vue3-recommended', 'standard'],
   parserOptions: {
     // js的版本
     ecmaVersion: 13,
