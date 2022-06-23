@@ -454,7 +454,7 @@ VSCode 设置里配置报错时格式化代码
 
 ```bash
 1、安装依赖工具
-  npm i @commitlint/config-conventional @commitlint/cli -D
+  npm i commitlint @commitlint/config-conventional @commitlint/cli -D
   
 2、项目根目录下新建 .commitlintrc.js 配置文件
    
