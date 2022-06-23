@@ -304,6 +304,7 @@ VSCode 设置里配置报错时格式化代码
 
 1、安装 ESLint
    npm i eslint -D
+   局部安装的 eslint，需要通过 ./node_modules/.bin/eslint eslint xxx 或 npx eslint xxx 的形式使用
 
 2、支持 vue 项目
    npm i eslint-plugin-vue -D
@@ -394,10 +395,31 @@ VSCode 设置里配置报错时格式化代码
 	
 	修改 .husky/pre-commit hook 文件的触发命令：npx eslint --fix ./src --ext .vue,.js,.ts
 	
-	上面这个 pre-commit hook 文件的作用是：当我们执行 git commit -m "xxx" 时，会先对 src 目录下所有的 .vue、.js、.ts  文件执行   命令，如果 ESLint 通过，成功 commit，否则终止 commit。
+	上面这个 pre-commit hook 文件的作用是：当我们执行 git commit -m "xxx" 时，会先对 src 目录下所有的 .vue、.js、.ts  文件执行命令，如果 ESLint 通过，成功 commit，否则终止 commit。
 	
 ```
 
 ​	但是又存在一个问题，有时候明明只改动了一两个文件，却要对所有的文件执行 `eslint --fix`。假如这是一个历史项目，我们在中途配置了 ESLint 规则，那么在提交代码时，也会对其他未修改的历史文件都进行检查，可能会造成大量文件出现 ESLint 错误，显然不是我们想要的结果。
 
 ​	我们要做到只用 ESLint 修复自己此次写的代码，而不去影响其他的代码。所以我们还需借助一个神奇的工具 **lint-staged** 。
+
+
+
+**配置 lint-staged**
+
+​	lint-staged 这个工具一般结合 husky 来使用，它可以让 husky 的 `hook` 触发的命令只作用于 `git add` 那些文件（即处于 git 暂存区的文件），而不会影响到其他文件。
+
+```bash
+1、安装 lint-staged
+   npm i lint-staged -D
+
+2、在 package.json里增加 lint-staged 配置项
+    "lint-staged": {
+      "*.{vue,js,ts}": "npx eslint --fix"
+    }
+    这行命令表示：只对 git 暂存区的 .vue、.js、.ts 文件执行 npx eslint --fix
+
+3、修改 .husky/pre-commit hook 的触发命令为：npx lint-staged
+```
+
+至此，husky 和 lint-staged 组合配置完成
