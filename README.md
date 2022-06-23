@@ -422,7 +422,7 @@ VSCode 设置里配置报错时格式化代码
 3、修改 .husky/pre-commit hook 的触发命令为：npx lint-staged
 ```
 
-​	`git commit`时触发 `pre-commit` 钩子，会运行 `lint-staged` 命令，对提交到暂存区的相应文件执行 eslint 的检查和修复命令。至此，husky 和 lint-staged 组合配置完成
+​	`git commit`时触发 `pre-commit` 钩子，会运行 `lint-staged` 命令，对提交到暂存区的相应文件执行 eslint 的检查和修复命令。至此，husky 和 lint-staged 组合配置完成。
 
 
 
@@ -436,8 +436,8 @@ VSCode 设置里配置报错时格式化代码
 
 | type值   | 描述                                                   |
 | -------- | ------------------------------------------------------ |
-| feat     | 新增一个功能                                           |
-| fix      | 修复一个 Bug                                           |
+| feat     | 新增功能                                               |
+| fix      | 修复Bug                                                |
 | docs     | 文档变更                                               |
 | style    | 代码格式（不影响功能，例如空格、分号等格式修正）       |
 | refactor | 代码重构                                               |
@@ -456,7 +456,26 @@ VSCode 设置里配置报错时格式化代码
 1、安装依赖工具
   npm i commitlint @commitlint/config-conventional @commitlint/cli -D
   
+  
 2、项目根目录下新建 .commitlintrc.js 配置文件
-   
+   module.exports = {
+  	  extends: ['@commitlint/config-conventional'],
+      rules: {
+        'type-enum': [
+          2,
+          'always',
+          ['feat', 'fix', 'docs', 'style', 'refactor', 'ci', 'build', 'test', 'revert', 'perf', 'chore']
+        ]
+      }
+   }
+ 
+ 
+3、.husky 文件夹下新增 commit-msg 钩子文件，加入内容
+   #!/usr/bin/env sh
+   . "$(dirname -- "$0")/_/husky.sh"
+
+   npx --no-install commitlint --edit
+
 ```
 
+至此，规范提交就配置好了，`git commit` 时的描述信息必须含有相应的 type 值才能提交成功。
