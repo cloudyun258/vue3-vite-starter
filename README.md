@@ -180,7 +180,7 @@ npm i sass -D
 [*.{js,jsx,ts,tsx,vue}]
 charset = utf-8 # 设置文件字符集为 utf-8
 indent_style = space # 缩进风格（tab | space）
-indent_size = 2 # 缩进大小
+indent_size = 4 # 缩进大小
 end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
 trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
@@ -189,7 +189,7 @@ insert_final_newline = true # 始终在文件末尾插入一个新行（保存�
 
 1、不需要修改 EditorConfig for VS Code 插件的配置，用默认就行
 2、有些配置是默认生效，有些是保存时才生效，有些需要手动格式化：shift + alt + f
-3、配置在当前项目中会覆盖编辑器自带的配置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
+3、配置在当前项目中会覆盖编辑器自带的配置，如果没有该文件，则会使用各个编辑器默认的设置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
 
 
 
@@ -199,7 +199,7 @@ root = true
 [*]
 charset = utf-8 # 设置文件字符集为 utf-8
 indent_style = space # 缩进风格 (tab | space)
-indent_size = 2 # 缩进大小
+indent_size = 4 # 缩进大小
 end_of_line = lf # 控制换行类型(lf | cr | crlf)
 trim_trailing_whitespace = true # 去除行首的任意空白字符
 insert_final_newline = true # 始终在文件末尾插入一个新行
@@ -222,7 +222,7 @@ trim_trailing_whitespace = false
 1、安装 prettier
    npm i prettier -D
 
-2、创建 Prettier 配置文件（.prettierrc 或 .prettierrc.js 或 .prettierrc.json）
+2、创建 prettier 配置文件（.prettierrc 或 .prettierrc.js 或 .prettierrc.json）
    这里使用 .prettierrc.js 文件
    
 3、常见配置
@@ -264,7 +264,7 @@ trim_trailing_whitespace = false
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 
-2、VSCode 设置里也可以配置 Prettier，但如果项目里有配置文件，VSCode里的配置会被覆盖，优先用配置文件的
+2、VSCode 设置里也可以配置 Prettier 插件的格式化风格，如果项目里有配置文件，会优先用配置文件的，否则会使用设置里插件配置的
 
 3、关于 .prettierignore 文件
    .prettierignore 基于.gitignore 和 .eslintignore（如果有的话）。所以如果把一个文件添加到了 .gitignore 或者.eslintignore 中，即使没有 .prettierignore 这个文件，那些文件也会被 Prettier 忽略。
