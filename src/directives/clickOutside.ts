@@ -21,7 +21,7 @@ const clickOutside = {
     if (binding.value === binding.oldValue) {
       return
     }
-    this.mounted(el, binding)
+    clickOutside.mounted(el, binding)
   },
   unmounted(el: any) {
     document.removeEventListener('click', el.__vueClickOutside__, false)
