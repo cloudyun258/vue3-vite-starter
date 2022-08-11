@@ -30,7 +30,7 @@
 
 ### 架构搭建
 
-本项目使用 Vite 构建工具，**需要 Node.js 版本 >= 12.0.0**
+本项目使用 Vite 作为构建工具，**需要 Node.js 版本 >= 12.0.0**
 
 ```bash
 # 查看 Node.js 版本
@@ -44,7 +44,7 @@
 **使用 Vite 快速初始化项目雏形**
 
 ```bash
-	提示：使用 vite 创建项目，不像 vue-cli 那样，可以在创建的时候选择 vue-router、vuex、sass、eslint、test 等工具，这些都需要后面自己手动安装
+	提示：使用 vite 2.x 创建项目，不像 vue-cli 那样，可以在创建的时候选择 vue-router、vuex、sass、eslint、test 等工具，这些都需要后面自己手动安装
 
 # 使用 npm
     npm init @vitejs/app
@@ -145,7 +145,7 @@ npm i axios
 
 
 
-**集成 CSS 预编译器 Sass**
+**集成 CSS 预处理器 Sass**
 
 ```bash
 # vite 内部已帮我们集成了相关的 loader，不需要额外安装 sass-loader
@@ -170,7 +170,7 @@ npm i sass -D
 
 **集成 EditorConfig 配置**
 
-​	EditorConfig 有助于为不同编辑器上处理同一项目的多个开发人员维护一致的编码风格。VSCode 使用 EditorConfig 需要下载插件 **EditorConfig for VS Code** 。
+​	EditorConfig 有助于为不同编辑器上处理同一项目的多个开发人员维护一致的编码风格。VSCode 使用 EditorConfig 需要下载插件 **EditorConfig for VSCode** 。
 
 在项目根目录下增加 `.editorconfig` 文件，vue 项目常用配置如下：
 
@@ -187,7 +187,7 @@ insert_final_newline = true # 始终在文件末尾插入一个新行（保存�
 # max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 prettier 来配置）
 
 
-1、不需要修改 EditorConfig for VS Code 插件的配置，用默认就行
+1、不需要修改 EditorConfig for VSCode 插件的配置，用默认就行
 2、有些配置是默认生效，有些是保存时才生效，有些需要手动格式化：shift + alt + f
 3、配置在当前项目中会覆盖编辑器自带的配置，如果没有该文件，则会使用各个编辑器默认的设置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
 
