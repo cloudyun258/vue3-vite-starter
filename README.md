@@ -369,15 +369,15 @@ trim_trailing_whitespace = false
 
 ​	我们在项目中已集成 ESLint 和 Prettier，在编码时，这些工具可以对我们写的代码进行实时校验，在一定程度上能有效规范我们写的代码，但团队可能会有些人觉得这些条条框框的限制很麻烦，选择视“提示”而不见，依旧按自己的一套风格来写代码，或者干脆禁用掉这些工具，开发完成就直接把代码提交到了仓库，日积月累，ESLint 也就形同虚设。
 
-​	所以，我们还需要做一些限制，让没通过 ESLint 检测和修复的代码禁止提交，从而保证仓库代码都是符合规范的。
+​	所以，还需要做一些限制，让没通过 ESLint 检测和修复的代码禁止提交，从而保证仓库代码都是符合规范的。
 
 ​	为了解决这个问题，我们需要用到 Git Hook，在本地执行 `git commit` 的时候，就对所提交的代码进行 ESLint 检测和修复（即执行 `eslint --fix`），如果这些代码没通过 ESLint 规则校验，则禁止提交。
 
 实现这一功能，我们需要借助 **husky + lint-staged**
 
-- husky：Git Hook 工具，可以设置在 git 各个阶段（`pre-commit`、`commit-msg`、`pre-push` 等）触发我们的命令。
+- husky：Git Hook 工具，可以设置在 git 各个阶段（`pre-commit`、`commit-msg`、`pre-push` 等）触发相应的命令。
 
-- lint-staged：在 git 暂存的文件上运行 linters
+- lint-staged：可以只对在 git 暂存的文件上执行校验
 
   
 
@@ -402,7 +402,7 @@ trim_trailing_whitespace = false
 
 ​	但是又存在一个问题，有时候明明只改动了一两个文件，却要对所有的文件执行 `eslint --fix`。假如这是一个历史项目，我们在中途配置了 ESLint 规则，那么在提交代码时，也会对其他未修改的历史文件都进行检查，可能会造成大量文件出现 ESLint 错误，显然不是我们想要的结果。
 
-​	我们要做到只用 ESLint 修复自己此次写的代码，而不去影响其他的代码。所以我们还需借助一个神奇的工具 **lint-staged** 。
+​	我们要做到只用 ESLint 修复自己此次提交的代码，而不去影响其他的代码。所以我们还需借助一个神奇的工具 **lint-staged** 。
 
 
 
