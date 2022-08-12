@@ -230,21 +230,16 @@ trim_trailing_whitespace = false
 	详细配置请查看项目内文件
 
 4、如何格式化
-    // 格式化所有文件（. 表示所有文件）
-    npx prettier --write .
-    // 或先在 package.json 里配置 script  "prettier": "npx prettier --write ."
+    // 格式化文件（./src 表示格式化 src 目录下的所有文件）
+    npx prettier --write ./src
+    // 或先在 package.json 里配置 script. "prettier": "npx prettier --write ./src"
     npm run prettier
-    // 或保存时自动格式化
-    ...... 这里使用这种形式
-    
+    // 或 VSCode 中配置保存时自动格式化（不推荐）
   
 
-1、可以在 vscode 设置里配置保存的时候默认使用 Prettier 来格式化代码
+1、可以在 VSCode 里配置保存的时候默认使用 Prettier 来格式化代码（这里我不启用保存格式化）
   参考：https://blog.csdn.net/bianliuzhu/article/details/123667127
     "editor.formatOnSave": true,
-    "[vue]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -255,6 +250,9 @@ trim_trailing_whitespace = false
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[json]": {
@@ -274,30 +272,33 @@ trim_trailing_whitespace = false
 
 **集成 ESLint 配置**
 
-​	ESLint 是一款用于查找并报告代码中问题的工具，并且支持部分问题自动修复。VSCode 使用 ESLint 配置文件需要下载插件 **ESLint**。
+​	ESLint 是一款用于查找并报告代码中问题的工具，并且支持部分问题保存时自动修复。VSCode 中想要正确使用 ESLint 校验代码并保存时自动修复，需要进行如下配置：
 
-VSCode 设置里配置报错时格式化代码
+**基本配置**
 
 ```json
-"eslint.autoFixOnSave": true,  // 启用保存时自动修复，默认只支持.js文件
-"eslint.validate": [
-    "javascript",  // 用 eslint 的规则检测 js 文件
-    {
-        "language": "vue",   // 检测vue文件
-        "autoFix": true   // 为vue文件开启保存自动修复的功能
-    },
-    {
-        "language": "html",
-        "autoFix": true
-    }
-],
-"eslint.rules.customizations": []
+1、安装 ESLint 插件
+
+2、VSCode 设置里进行配置
 "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-}
+    "source.fixAll.eslint": true // 启用 eslint 自动修复
+},
+"editor.formatOnSave": true,
+"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+"eslint.validate": [ // 执行校验的文件类型
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html"
+],
+"eslint.alwaysShowStatus": true, // VSCode 底部状态栏显示 eslint
+"eslint.format.enable": true,
+"eslint.rules.customizations": [] // eslint 自定义规则
 ```
 
-依赖安装
+**项目内依赖安装**
 
 ```bash
 # http://eslint.cn
@@ -324,14 +325,14 @@ VSCode 设置里配置报错时格式化代码
 
 一键安装： npm i eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-import eslint-define-config eslint-config-standard -D
 
-如果使用了 eslint-config-standard 了这个规则库，eslint 不生效的话，还需要安装：
+如果使用了 eslint-config-standard 这个规则库，eslint 不生效的话，还需要安装：
   npm i eslint-plugin-promise eslint-plugin-n -D
 ```
 
 在项目根目录下创建 `.eslintrc.js` 和 `.eslintignore`文件，vue 项目常用配置如下：
 
 ```bash
-.eslintignore
+.eslintignore：
     public
     dist
     build
@@ -347,10 +348,10 @@ VSCode 设置里配置报错时格式化代码
 
 **解决 Prettier 和 ESLint 的冲突**
 
-​	通常会在项目中同时使用 ESLint 和 Prettier 来保证代码规范，难免会存在规则冲突的情况。解决两者冲突问题，需要用到 **eslint-plugin-prettier** 和 **eslint-config-prettier**。
+​	通常会在项目中同时使用 Prettier 和 ESLint 来保证代码规范，难免会存在规则冲突的情况。解决两者冲突的问题，需要用到 **eslint-plugin-prettier** 和 **eslint-config-prettier** 这两个 npm 包。
 
-- `eslint-plugin-prettier` 将 Prettier 的规则设置到 ESLint 的规则中
-- `eslint-config-prettier` 关闭 ESLint 中与 Prettier 中会发生冲突的规则
+- `eslint-plugin-prettier`  将 Prettier 规则设置到 ESLint 的规则中
+- `eslint-config-prettier`  覆盖 ESLint 中与 Prettier 中会发生冲突的规则
 
 最后形成优先级，当有相同的配置项时：`Prettier 配置规则` > `ESLint 配置规则`
 
@@ -358,8 +359,8 @@ VSCode 设置里配置报错时格式化代码
  // 启用的规则，添加 plugin:prettier/recommended 规则，这样就会覆盖 eslint 中相同的规则
  extends: ['plugin:vue/vue3-recommended', 'standard', 'plugin:prettier/recommended']
 
- 但是，这种方式并不是使用的项目内 .prettierrc.js 文件内的配置来覆盖，而是使用的第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
- 最终，决定不使用这种办法，而是选择了把两者相同的配置项的值都改成一样的，这样就不会有冲突了
+ 但是，这种方式并不是使用项目内 .prettierrc.js 文件的配置来覆盖，而是使用第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
+ 最终，决定不使用这种办法，而是选择了把两者相同的配置项的值都改成一样的，这样就不会有冲突了！（推荐）
 ```
 
 
