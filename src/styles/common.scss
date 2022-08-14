@@ -1,0 +1,124 @@
+/**
+ *  通用样式定义
+ */
+
+
+// 文本省略
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis-multi {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 文本位置
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// 字体粗细
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+// 宽高
+.fill-contianer {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-1 {
+  width: 0;
+  flex: 1;
+}
+
+// 居中
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-center {
+  display: flex;
+  align-items: center;
+}
+
+.abs-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.fixed-center {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+// 透明 & 圆角
+.opacity-04 {
+  opacity: 0.4;
+}
+
+.bg-opacity {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.br-circle {
+  border-radius: 50%;
+}
+
+// 光标样式
+.c-pointer {
+  cursor: pointer;
+}
+
+.c-ban {
+  cursor: not-allowed;
+}
+
+.c-drag {
+  cursor: all-scroll;
+}
+
+// 清除浮动
+.clearfloat {
+  zoom: 1;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+  }
+}

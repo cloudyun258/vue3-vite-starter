@@ -2,4 +2,4 @@
  * 接口管理目录
  */
 
-export {}
+export const userInfoApi = '/users/cloudyun258'

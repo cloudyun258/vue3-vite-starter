@@ -10,12 +10,6 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src') // 设置 @ 指向 src 目录
-    }
-  },
-  base: './', // 设置打包路径
   server: {
     port: 4000,
     open: true,
@@ -29,5 +23,23 @@ export default defineConfig({
     //     rewrite: (path) => path.replace(/^\/api/, '')
     //   }
     // }
+  },
+  base: './', // 设置打包路径
+  resolve: {
+    alias: { // 路径别名配置
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        /*
+          在 main.js 或 App.vue 中全局导入 _variable.scss 和 _mixins.scss 文件是无效的，
+          只能每个组件使用的时候都在内部导入，
+          或者在这里通过 “additionalData” 属性配置全局导入！
+        */
+        additionalData: '@import "@/styles/_variable.scss";'
+      }
+    }
   }
 })
