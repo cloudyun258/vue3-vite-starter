@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import store from './store/index'
+import store, { key } from './store/index'
 import directives from './directives/index'
 
 import {
@@ -23,7 +23,7 @@ import './styles/index.scss'
 const app = createApp(App)
 
 app.use(router)
-  .use(store)
+  .use(store, key)
   .use(directives)
 
 app.use(ElContainer)

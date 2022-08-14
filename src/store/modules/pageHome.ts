@@ -9,13 +9,15 @@ export interface IHomeState {
 export const homePage: Module<IHomeState, IRootState> = {
   namespaced: true,
   state: {
-    count: 0
+    count: 1
   },
   actions: {
 
   },
   mutations: {
-
+    DOUBLE_COUNT(state: IHomeState) {
+      state.count *= 2
+    }
   },
   getters: {
 
