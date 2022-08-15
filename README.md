@@ -356,7 +356,7 @@ trim_trailing_whitespace = false
 最后形成优先级，当有相同的配置项时：`Prettier 配置规则` > `ESLint 配置规则`
 
 ```javascript
- // 启用的规则，添加 plugin:prettier/recommended 规则，这样就会覆盖 eslint 中相同的规则
+ // 启用的规则，添加 plugin:prettier/recommended 规则，这样就会覆盖 ESLint 中相同的规则
  extends: ['plugin:vue/vue3-recommended', 'standard', 'plugin:prettier/recommended']
 
  但是，这种方式并不是使用项目内 .prettierrc.js 文件的配置来覆盖，而是使用第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
@@ -375,9 +375,9 @@ trim_trailing_whitespace = false
 
 实现这一功能，我们需要借助 **husky + lint-staged**
 
-- husky：Git Hook 工具，可以设置在 git 各个阶段（`pre-commit`、`commit-msg`、`pre-push` 等）触发相应的命令。
+- husky：Git Hook 工具，可以设置在 Git 各个阶段（`pre-commit`、`commit-msg`、`pre-push` 等）触发相应的命令。
 
-- lint-staged：可以只对在 git 暂存的文件上执行校验
+- lint-staged：可以只对在 Git 暂存的文件上执行校验
 
   
 
@@ -408,22 +408,22 @@ trim_trailing_whitespace = false
 
 **配置 lint-staged**
 
-​	lint-staged 这个工具一般结合 husky 来使用，它可以让 husky 的 `hook` 触发的命令只作用于 `git add` 那些文件（即处于 git 暂存区的文件），而不会影响到其他文件。
+​	lint-staged 这个工具一般结合 husky 来使用，它可以让 husky 的 `hook` 触发的命令只作用于 `git add` 那些文件（即处于 Git 暂存区的文件），而不会影响到其他文件。
 
 ```bash
-1、安装 lint-staged
+1、安装 lint-staged 依赖包
    npm i lint-staged -D
 
-2、在 package.json里增加 lint-staged 配置项
+2、在 package.json 里增加 lint-staged 配置项
     "lint-staged": {
       "*.{vue,js,ts}": "npx eslint --fix"
     }
-    这行命令表示：只对 git 暂存区的 .vue、.js、.ts 文件执行 npx eslint --fix
+    这行命令表示：只对 Git 暂存区的 .vue、.js、.ts 文件执行 npx eslint --fix 命令
 
 3、修改 .husky/pre-commit hook 的触发命令为：npx lint-staged
 ```
 
-​	`git commit`时触发 `pre-commit` 钩子，会运行 `lint-staged` 命令，对提交到暂存区的相应文件执行 eslint 的检查和修复命令。至此，husky 和 lint-staged 组合配置完成。
+​	`git commit`时触发 `pre-commit` 钩子，会运行 `lint-staged` 命令，对提交到暂存区的相应文件执行 ESLint 的检查和修复命令。至此，husky 和 lint-staged 组合配置完成。
 
 
 
@@ -454,7 +454,7 @@ trim_trailing_whitespace = false
 **集成 commitizen 实现规范提交**
 
 ```bash
-1、安装依赖工具
+1、安装依赖包
   npm i commitlint @commitlint/config-conventional @commitlint/cli -D
   
   
@@ -471,7 +471,7 @@ trim_trailing_whitespace = false
    }
  
  
-3、.husky 文件夹下新增 commit-msg 钩子文件，加入内容
+3、.husky 文件夹下新增 commit-msg 钩子文件，加入以下配置
    #!/usr/bin/env sh
    . "$(dirname -- "$0")/_/husky.sh"
 
@@ -489,7 +489,7 @@ trim_trailing_whitespace = false
 
 ​	单元测试是项目开发中一个非常重要的环节，完整的测试能为代码和业务提供质量保证，减少 Bug 的出现。
 
-本章节将带领大家在 Vite + Vue3 + TypeScript 的项目中集成单元测试工具，详情见 **test** 分支。
+本项目也会集成单元测试工具，详情见 `test` 分支。
 
 
 
@@ -519,7 +519,7 @@ trim_trailing_whitespace = false
 
 
 
-**GitHub Actions 的配置步骤**
+**GitHub Actions 配置步骤**
 
 **1、创建 GitHub 仓库**
 
@@ -536,7 +536,7 @@ trim_trailing_whitespace = false
 
 **2、创建 GitHub Token**
 
-创建一个有 **repo** 和 **workflow** 权限的 [GitHub Token](https://github.com/settings/tokens/new)
+创建一个拥有 **repo** 和 **workflow** 权限的 [GitHub Token](https://github.com/settings/tokens/new)
 
 创建路径：  `Settings`  ->  `Developer settings`  ->  `Personal access tokens`  ->  `Generate new token`
 
@@ -556,11 +556,11 @@ trim_trailing_whitespace = false
 
 ![](https://s3.bmp.ovh/imgs/2022/08/16/cffbe62d0715b01c.png)
 
-新创建的 secret:  `VUE3_VITE_STARTER` 在 Actions 配置文件中要用到，两个地方需保持一致。
+新创建的 `VUE3_VITE_STARTER` 在 GitHub Actions 配置文件中要用到，两个地方需保持一致。
 
 
 
-**3、创建 Actions 配置文件**
+**3、创建 GitHub Actions 配置文件**
 
 1. 在项目根目录下创建 `.github` 目录
 2. 在 `.github` 目录下创建 `workflows` 目录
@@ -568,11 +568,11 @@ trim_trailing_whitespace = false
 
 ![](https://s3.bmp.ovh/imgs/2022/08/16/42cfeab749941349.png)
 
-`deploy.yml` 文件的详细内容看项目内文件
+`deploy.yml` 文件的详细配置内容看项目内文件
 
 
 
-**4、查看 Actions 状态和访问网站**
+**4、查看 GitHub Actions 状态**
 
 **查看触发的 Actions**
 
@@ -580,5 +580,5 @@ trim_trailing_whitespace = false
 
 **访问部署好的项目**
 
-可以通过 `https://cloudyun258.github.io/vue3-vite-starter` 来访问
+本项目可以通过 `https://cloudyun258.github.io/vue3-vite-starter` 来访问
 
