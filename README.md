@@ -497,7 +497,7 @@ trim_trailing_whitespace = false
 
 ### 自动部署
 
-​	到了这一步，我们已经在项目中集成了**代码规范约束**、**提交信息规范约束**和**单元测试约束**，从而保证远端仓库（如 GitHub、GitLab、Gitee 仓库等）的代码都是高质量的。
+​	到了这一步，我们已经在项目中集成**代码规范约束**、**提交信息规范约束**和**单元测试约束**，从而保证了远程仓库（如 GitHub、GitLab、Gitee 仓库）的代码都是高质量的。
 
 ​	本项目是要搭建一套规范的前端工程化环境，为此我们使用 CI（Continuous Integration 持续集成）来完成项目最后的部署工作。
 
@@ -513,16 +513,72 @@ trim_trailing_whitespace = false
 
 
 
+**自动部署触发原理**
+
+​	当有新提交的代码 `push` 到 GitHub 仓库时，就会触发 GitHub Actions，在 GitHub 服务器上执行 Actions 配置文件里面的命令，例如：**安装依赖**、**项目打包**等，然后会将打包好的静态文件部署到 GitHub Pages 上，最后，就能通过域名访问了。
+
+
+
 **GitHub Actions 的配置步骤**
 
 **1、创建 GitHub 仓库**
 
-因为 GitHub Actions 只对 GitHub 仓库有效，所以我们创建 GitHub 来托管项目代码。
+因为 GitHub Actions 只对 GitHub 仓库有效，所以我们需要使用 GitHub 来托管项目代码。
 
 其中，我们用：
 
 - `master` 分支存储项目源代码
-- `gh-pages` 分支存储打包后的静态文件
+- `gh-pages` 分支存储打包后的静态文件（自动创建）
 
 `gh-pages` 分支，是 GitHub Pages 服务的固定分支，可以通过 HTTP 的方式访问到这个分支的静态文件资源。
+
+
+
+**2、创建 GitHub Token**
+
+创建一个有 **repo** 和 **workflow** 权限的 [GitHub Token](https://github.com/settings/tokens/new)
+
+创建路径：  `Settings`  ->  `Developer settings`  ->  `Personal access tokens`  ->  `Generate new token`
+
+![](./src/assets/docs/01.png)
+
+新生成的 token 只会显示一次，保存起来，后面要用到。如果忘记了，重新生成即可。
+
+![](./src/assets/docs/02.png)
+
+
+
+**在仓库中添加 secret**
+
+​	将上面新创建的 token 添加到 GitHub 仓库的 `Secrets` 里，并将这个新增的 secret 命名为 `VUE3_VITE_STARTER` （名字无所谓，随你喜欢）。
+
+添加路径：仓库主页 -> `Settings`  ->  `Secrets`  ->  `Actions`  ->  `New repository secret`
+
+![](./src/assets/docs/03.png)
+
+新创建的 secret:  `VUE3_VITE_STARTER` 在 Actions 配置文件中要用到，两个地方需保持一致。
+
+
+
+**3、创建 Actions 配置文件**
+
+1. 在项目根目录下创建 `.github` 目录
+2. 在 `.github` 目录下创建 `workflows` 目录
+3. 在 `workflows` 目录下创建 `deploy.yml` 文件
+
+![](./src/assets/docs/04.png)
+
+`deploy.yml` 文件的详细内容看项目内文件
+
+
+
+**4、查看 Actions 状态和访问网站**
+
+**查看触发的 Actions**
+
+![](./src/assets/docs/05.png)
+
+**访问部署好的项目**
+
+可以通过 `https://cloudyun258.github.io/vue3-vite-starter` 来访问
 
