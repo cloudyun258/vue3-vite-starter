@@ -540,11 +540,11 @@ trim_trailing_whitespace = false
 
 创建路径：  `Settings`  ->  `Developer settings`  ->  `Personal access tokens`  ->  `Generate new token`
 
-![](./src/assets/docs/01.png)
+![](https://s3.bmp.ovh/imgs/2022/08/16/eab10b82cdebcb75.png)
 
 新生成的 token 只会显示一次，保存起来，后面要用到。如果忘记了，重新生成即可。
 
-![](./src/assets/docs/02.png)
+![](https://s3.bmp.ovh/imgs/2022/08/16/2abed5c390ce7845.png)
 
 
 
@@ -554,7 +554,7 @@ trim_trailing_whitespace = false
 
 添加路径：仓库主页 -> `Settings`  ->  `Secrets`  ->  `Actions`  ->  `New repository secret`
 
-![](./src/assets/docs/03.png)
+![](https://s3.bmp.ovh/imgs/2022/08/16/cffbe62d0715b01c.png)
 
 新创建的 secret:  `VUE3_VITE_STARTER` 在 Actions 配置文件中要用到，两个地方需保持一致。
 
@@ -566,7 +566,7 @@ trim_trailing_whitespace = false
 2. 在 `.github` 目录下创建 `workflows` 目录
 3. 在 `workflows` 目录下创建 `deploy.yml` 文件
 
-![](./src/assets/docs/04.png)
+![](https://s3.bmp.ovh/imgs/2022/08/16/42cfeab749941349.png)
 
 `deploy.yml` 文件的详细内容看项目内文件
 
@@ -576,7 +576,7 @@ trim_trailing_whitespace = false
 
 **查看触发的 Actions**
 
-![](./src/assets/docs/05.png)
+![](https://s1.ax1x.com/2022/08/16/vwACbq.png)
 
 **访问部署好的项目**
 
