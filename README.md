@@ -47,19 +47,19 @@
 	提示：使用 vite 2.x 创建项目，不像 vue-cli 那样，可以在创建的时候选择 vue-router、vuex、sass、eslint、test 等工具，这些都需要后面自己手动安装
 
 # 使用 npm
-    npm init @vitejs/app
+    npm init vite@latest
 # 使用 yarn
-	yarn create @vitejs/app
+	yarn create vite
 
 # 还可以通过附加的命令行选项直接指定项目名和模板，本项目要构建 Vite + Vue3 + TypeScript 项目，则运行：
     # npm 6.x
-    npm init @vitejs/app vue3-vite-starter --template vue-ts
+    npm init vite@latest vue3-vite-starter --template vue-ts
 
     # npm 7+（需要额外的双横线）
-    npm init @vitejs/app vue3-vite-starter -- --template vue-ts
+    npm init vite@latest vue3-vite-starter -- --template vue-ts
 
     # yarn
-    yarn create @vitejs/app vue3-vite-starter --template vue-ts
+    yarn create vite vue3-vite-starter --template vue-ts
 ```
 
 
