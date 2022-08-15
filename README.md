@@ -497,3 +497,32 @@ trim_trailing_whitespace = false
 
 ### 自动部署
 
+​	到了这一步，我们已经在项目中集成了**代码规范约束**、**提交信息规范约束**和**单元测试约束**，从而保证远端仓库（如 GitHub、GitLab、Gitee 仓库等）的代码都是高质量的。
+
+​	本项目是要搭建一套规范的前端工程化环境，为此我们使用 CI（Continuous Integration 持续集成）来完成项目最后的部署工作。
+
+常见的 CI 工具有 GitHub Actions、GitLab CI、Travis CI、Circle CI 等。
+
+这里，我们使用 GitHub Actions。
+
+
+
+**什么是 GitHub Actions**
+
+​	GitHub Actions 是 GitHub 的持续集成服务。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器、发布到第三方服务等等，GitHub 把这些操作称为 actions。
+
+
+
+**GitHub Actions 的配置步骤**
+
+**1、创建 GitHub 仓库**
+
+因为 GitHub Actions 只对 GitHub 仓库有效，所以我们创建 GitHub 来托管项目代码。
+
+其中，我们用：
+
+- `master` 分支存储项目源代码
+- `gh-pages` 分支存储打包后的静态文件
+
+`gh-pages` 分支，是 GitHub Pages 服务的固定分支，可以通过 HTTP 的方式访问到这个分支的静态文件资源。
+
