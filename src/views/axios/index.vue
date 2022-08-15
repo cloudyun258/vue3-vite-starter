@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import axios from '../../utils/request'
+import axios from '@/utils/request'
 import { userInfoApi } from '@/apis'
 
 const userInfo = reactive({

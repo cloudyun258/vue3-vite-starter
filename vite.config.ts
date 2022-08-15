@@ -27,7 +27,7 @@ export default defineConfig({
   base: './', // 设置打包路径
   resolve: {
     alias: { // 路径别名配置
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, './src')
     }
   },
   css: {

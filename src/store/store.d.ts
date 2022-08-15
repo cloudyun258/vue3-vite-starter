@@ -8,8 +8,8 @@ export interface IRootState {
 
 // 子模块的 state 类型
 export interface IModuleState {
-  HomePage: IHomeState,
-  ListPage: IListState
+  homePage: IHomeState,
+  listPage: IListState
 }
 
 export type AllState = IRootState & IModuleState
