@@ -71,6 +71,9 @@
 └── src/
 	├── apis/                      // 接口管理目录
     ├── assets/                    // 静态资源目录
+    	-styles                // 样式
+    	-images                // 图片
+    	-font                  // 字体图标
     ├── common/                    // 通用类库目录
     ├── components/                // 公共组件目录
     ├── constant/                  // 全局常量目录
@@ -78,7 +81,6 @@
     ├── hooks/                     // hook函数目录
     ├── router/                    // 路由配置目录
     ├── store/                     // 状态管理目录
-    ├── styles/                    // 通用 CSS 目录
 	├── types/                     // 类型定义目录
     ├── utils/                     // 工具函数目录
     ├── views/                     // 页面组件目录
