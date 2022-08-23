@@ -38,7 +38,7 @@ export default defineConfig({
           只能每个组件使用的时候都在内部导入，
           或者在这里通过 “additionalData” 属性配置全局导入！
         */
-        additionalData: '@import "@/styles/_variable.scss";'
+        additionalData: '@import "@/assets/styles/_variable.scss";'
       }
     }
   }
