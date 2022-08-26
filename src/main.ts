@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/index'
-import store, { key } from './store/index'
-import directives from './directives/index'
+import router from './router'
+import store, { key } from './store'
+import directives from './directives'
 
 import {
   ElContainer,

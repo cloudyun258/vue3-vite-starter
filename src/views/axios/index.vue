@@ -32,8 +32,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import axios from '@/utils/request'
-import { userInfoApi } from '@/apis'
+import * as APIS from '@/apis'
 
 const userInfo = reactive({
   avatar_url: '',
@@ -48,11 +47,13 @@ const getUserInfo = () => {
     return
   }
   loading.value = true
-  axios.get(userInfoApi).then((res: any) => {
+  APIS.getUserInfo().then((res: any) => {
     userInfo.avatar_url = res.avatar_url
     userInfo.bio = res.bio
     userInfo.blog = res.blog
     userInfo.location = res.location
+  }).catch(() => {
+    console.log('网络错误，请稍后重试')
   }).finally(() => {
     loading.value = false
   })
