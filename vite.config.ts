@@ -7,13 +7,16 @@ import vue from '@vitejs/plugin-vue'
 */
 import path from 'path'
 
-// https://vitejs.dev/config/
+/*
+  https://vitejs.dev/config
+  vite.config.ts 中无法使用 import.meta.env 对象的解决办法：https://www.jianshu.com/p/4973bd983e96
+*/
 export default defineConfig({
   plugins: [vue()],
   server: {
     port: 4000,
     open: true,
-    cors: true // 允许跨域
+    cors: true
     // 开发环境接口代理，根据项目实际情况配置
     // proxy: {
     //   '/api': {
@@ -26,7 +29,7 @@ export default defineConfig({
   },
   base: './', // 设置打包路径
   resolve: {
-    alias: { // 路径别名配置
+    alias: {
       '@': path.resolve(__dirname, './src')
     }
   },

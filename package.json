@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "test": "vite --mode test",
+    "dev:test": "vite --mode test",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "format": "npx prettier --write ./src",
@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^5.29.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "commitlint": "^17.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
