@@ -7,6 +7,8 @@ import vue from '@vitejs/plugin-vue'
 */
 import path from 'path'
 
+console.log('项目运行模式 NODE_ENV：', process.env.NODE_ENV)
+
 /*
   https://vitejs.dev/config
   vite.config.ts 中无法使用 import.meta.env 对象的解决办法：https://www.jianshu.com/p/4973bd983e96

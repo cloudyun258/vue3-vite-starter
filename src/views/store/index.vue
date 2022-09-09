@@ -13,11 +13,11 @@ import { useStore } from '@/store'
 const store = useStore()
 
 const homeCount = computed(() => {
-  return store.state.homePage?.count
+  return store.state.homePage.count
 })
 
 const doubleCount = () => {
-  store.commit('homePage/DOUBLE_COUNT')
+  store.commit('homePage/doubleCount')
 }
 </script>
 

@@ -15,7 +15,7 @@ export const homePage: Module<IHomeState, IRootState> = {
 
   },
   mutations: {
-    DOUBLE_COUNT(state: IHomeState) {
+    doubleCount(state: IHomeState) {
       state.count *= 2
     }
   },

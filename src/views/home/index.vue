@@ -9,7 +9,7 @@
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('环境配置对象：', import.meta.env)
+  console.log('环境变量配置对象：', import.meta.env)
 })
 </script>
 
