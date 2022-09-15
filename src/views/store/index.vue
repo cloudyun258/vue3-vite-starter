@@ -1,6 +1,6 @@
 <template>
   <div class="store flex-col-center">
-    <div class="store-title">Vuex 测试页面</div>
+    <div class="store-title">Vuex测试页面</div>
     <p class="doubleCount">store doubleCount is: {{ homeCount }}</p>
     <el-button class="button" type="primary" @click="doubleCount">数值翻倍</el-button>
   </div>

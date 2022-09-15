@@ -1,6 +1,6 @@
 <template>
   <div class="axios flex-col-center">
-    <div class="axios-title">Axios 测试页面</div>
+    <div class="axios-title">Axios测试页面</div>
     <el-card class="box-card">
       <template #header>
         <div class="card-header flex-col-center">
@@ -17,7 +17,7 @@
               :src="userInfo.avatar_url"
               class="user-avatar br-circle"
               alt=""
-            />
+            >
           </div>
           <div class="right">
             <p v-if="userInfo.bio">个性签名：{{ userInfo.bio }}</p>
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import * as APIS from '@/apis'
+import * as userApi from '@/apis'
 
 const userInfo = reactive({
   avatar_url: '',
@@ -47,7 +47,7 @@ const getUserInfo = () => {
     return
   }
   loading.value = true
-  APIS.getUserInfo().then((res: any) => {
+  userApi.getUserInfo().then((res: any) => {
     userInfo.avatar_url = res.avatar_url
     userInfo.bio = res.bio
     userInfo.blog = res.blog

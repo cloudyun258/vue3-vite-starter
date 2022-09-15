@@ -3,9 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "dev:test": "vite --mode test",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "cross-env NODE_ENV=development vite --mode development",
+    "dev:test": "cross-env NODE_ENV=test vite --mode test",
+    "build": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
     "format": "npx prettier --write ./src",
     "lint": "npx eslint --fix ./src",
