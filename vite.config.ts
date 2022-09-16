@@ -22,7 +22,7 @@ export default defineConfig({
     // 开发环境接口代理，根据项目实际情况配置
     // proxy: {
     //   '/api': {
-    //     target: 'http://xxx.xxx.xxx.xxx:3009',
+    //     target: 'https://admin.inside.xiaoe-tech.com',
     //     changeOrigin: true,
     //     secure: false,
     //     rewrite: (path) => path.replace(/^\/api/, '')
