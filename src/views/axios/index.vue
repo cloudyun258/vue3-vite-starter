@@ -17,7 +17,7 @@
               :src="userInfo.avatar_url"
               class="user-avatar br-circle"
               alt=""
-            >
+            />
           </div>
           <div class="right">
             <p v-if="userInfo.bio">个性签名：{{ userInfo.bio }}</p>

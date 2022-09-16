@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img class="home-logo m-auto" src="https://vite-vue3-starter.xpoet.cn/assets/logo.5041849f.png" alt="">
+    <img class="home-logo m-auto" src="https://vite-vue3-starter.xpoet.cn/assets/logo.5041849f.png" alt="" />
     <p class="home-title text-center">树深时见鹿，溪午不闻钟。——李白《访戴天山道士不遇》</p>
   </div>
 </template>
