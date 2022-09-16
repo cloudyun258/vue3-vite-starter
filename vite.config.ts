@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 /*
-  1、如果提示 path 模块找不到，则可以安装一下 @types/node -> npm i @types/node -D
+  1、如果提示 path 模块找不到，则可以安装一下 @types/node
   2、如果报错模块 path 只能在使用 “allowSyntheticDefaultImports“ 标志时进行默认导入，
-    则在 tsconfig.node.json 文件的 compilerOptions 对象里写上 "allowSyntheticDefaultImports": true
+    则在 tsconfig.node.json 文件的 compilerOptions 对象里加上 "allowSyntheticDefaultImports": true
 */
 import path from 'path'
 
-console.log('项目运行环境NODE_ENV：', process.env.NODE_ENV)
+console.log('项目运行环境（NODE_ENV）：', process.env.NODE_ENV)
 
 /*
   https://vitejs.dev/config
