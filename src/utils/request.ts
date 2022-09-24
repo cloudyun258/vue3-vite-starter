@@ -14,22 +14,22 @@ axios.interceptors.request.use(
      */
     return config
   },
-  (error) => {
-    return Promise.reject(error)
+  (err) => {
+    return Promise.reject(err)
   }
 )
 
 // 响应拦截器
 axios.interceptors.response.use(
-  (response) => {
+  (res) => {
     /**
      * 根据项目实际情况来对 response 做处理
      * 这里只返回后端响应的数据
      */
-    return response.data
+    return res.data
   },
-  (error) => {
-    return Promise.reject(error)
+  (err) => {
+    return Promise.reject(err)
   }
 )
 
