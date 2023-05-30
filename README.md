@@ -166,7 +166,7 @@ npm i sass -D
 
 - **EditorConfig** 负责统一各种编辑器的配置，所有和编辑器相关的配置都交给它
 - **Prettier** 作为 **代码外观上** 的格式化工具
-- 其余的，也就是 **代码逻辑和质量上** 的语法检查，用 **ESLint** 来做
+- 其余的，也就是 **代码逻辑和质量上** 的语法检查，使用 **ESLint** 来做
 
 
 
@@ -174,35 +174,37 @@ npm i sass -D
 
 ​	EditorConfig 有助于为不同编辑器上处理同一项目的多个开发人员维护一致的编码风格。VSCode 使用 EditorConfig 需要下载插件 **EditorConfig for VSCode** 。
 
-在项目根目录下增加 `.editorconfig` 文件，vue 项目常用配置如下：
+在项目根目录下增加 `.editorconfig` 文件，Vue 项目常用配置如下：
 
 ```bash
 # https://editorconfig.org
 
 [*.{js,jsx,ts,tsx,vue}]
-charset = utf-8 # 设置文件字符集为 utf-8
+# charset = utf-8 # 文件编码
 indent_style = space # 缩进风格（tab | space）
 indent_size = 4 # 缩进大小
-end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
+# end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
 trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
-# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 prettier 来配置）
+# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 Prettier 来配置）
 
 
-1、不需要修改 EditorConfig for VSCode 插件的配置，用默认就行
-2、有些配置是默认生效，有些是保存时才生效，有些需要手动格式化：shift + alt + f
-3、配置在当前项目中会覆盖编辑器自带的配置，如果没有该文件，则会使用各个编辑器默认的设置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
+1、不需要修改 EditorConfig for VSCode 插件的配置，用默认的就行
+2、有些配置是默认生效，有些是保存时才生效，有些需要手动格式化，例如 shift + alt + f
+3、.editorconfig 文件的配置在当前项目中会覆盖编辑器自带的配置，如果没有该文件，则会使用各个编辑器自带的配置，另外可能会受到 Prettier、ESLint 等配置的影响而导致失效
+
 
 
 
 还有一套较常用的配置：
+
 root = true
 
 [*]
-charset = utf-8 # 设置文件字符集为 utf-8
-indent_style = space # 缩进风格 (tab | space)
+charset = utf-8 # 文件编码
+indent_style = space # 缩进风格
 indent_size = 4 # 缩进大小
-end_of_line = lf # 控制换行类型(lf | cr | crlf)
+end_of_line = lf # 控制换行类型
 trim_trailing_whitespace = true # 去除行首的任意空白字符
 insert_final_newline = true # 始终在文件末尾插入一个新行
 
