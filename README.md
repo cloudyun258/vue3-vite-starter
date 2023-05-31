@@ -71,7 +71,6 @@
 └── src/
 	├── apis/                      // 接口管理目录
     ├── assets/                    // 静态资源目录
-    	-styles                // 样式
     	-images                // 图片
     	-font                  // 字体图标
     ├── common/                    // 通用类库目录
@@ -81,6 +80,7 @@
     ├── hooks/                     // hook函数目录
     ├── router/                    // 路由配置目录
     ├── store/                     // 状态管理目录
+    ├── styles/                    // 公共样式目录
 	├── types/                     // 类型定义目录
     ├── utils/                     // 工具函数目录
     ├── views/                     // 页面组件目录
@@ -102,7 +102,7 @@
 ```
 关于 Vite 更多配置项及用法，请查看 Vite 官网 https://vitejs.cn/config
 
-详细配置请查看项目内 vite.config.ts 文件
+详细配置查看项目内 vite.config.ts 文件
 ```
 
 
@@ -112,7 +112,7 @@
 ```bash
 npm i vue-router
 
-详细配置请查看项目内文件
+详细配置查看项目内文件
 ```
 
 
@@ -122,7 +122,7 @@ npm i vue-router
 ```bash
 npm i vuex@next
 
-详细配置请查看项目内文件
+详细配置查看项目内文件
 ```
 
 
@@ -130,9 +130,9 @@ npm i vuex@next
 **集成 UI 框架 Element-Plus**
 
 ```bash
-npm i element-plus
+npm i element-plus @element-plus/icons-vue
 
-详细配置请查看项目内文件
+详细配置查看项目内文件
 ```
 
 
@@ -142,7 +142,7 @@ npm i element-plus
 ```bash
 npm i axios
 
-详细配置请查看项目内文件
+详细配置查看项目内文件
 ```
 
 
@@ -150,7 +150,8 @@ npm i axios
 **集成 CSS 预处理器 Sass**
 
 ```bash
-# vite 内部已帮我们集成了相关的 loader，不需要额外安装 sass-loader
+# vite 内部已经集成了相关的 loader，所以不需要额外安装 sass-loader
+# dart-sass
 npm i sass -D
 ```
 
