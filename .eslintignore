@@ -1,7 +1,7 @@
-public
-dist
-build
-tests
-themes
-node_modules
-src/common/libs
+node_modules/
+public/
+dist/
+build/
+test/
+themes/
+src/common/libs/

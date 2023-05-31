@@ -186,7 +186,7 @@ indent_size = 4 # 缩进大小
 # end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
 trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
-# max_line_length = 120 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 Prettier 来配置）
+# max_line_length = 160 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 Prettier 来配置）
 
 
 1、不需要修改 EditorConfig for VSCode 插件的配置，用默认的就行
@@ -218,7 +218,7 @@ trim_trailing_whitespace = false
 
 **集成 Prettier 配置**
 
-​	Prettier 是一款强大的代码格式化工具，支持多种格式的配置文件，比如 `.json`、`.yml`、`.yaml`、`.js`等。VSCode 使用 Prettier 需要下载插件 **Prettier - Code formatter** 。
+​	Prettier 是一款强大的代码格式化工具，支持多种格式的配置文件，比如 `.json`、`.yml`、`.yaml`、`.js` 等。VSCode 使用 Prettier 需要下载插件 **Prettier - Code formatter** 。
 
 在项目根目录下创建 `.prettierrc.js` 文件，vue 项目常用配置如下：
 
@@ -226,20 +226,20 @@ trim_trailing_whitespace = false
 1、安装 prettier
    npm i prettier -D
 
-2、创建 prettier 配置文件（.prettierrc 或 .prettierrc.js 或 .prettierrc.json）
+2、创建 prettier 配置文件（.prettierrc.js / .prettierrc / .prettierrc.json）
    这里使用 .prettierrc.js 文件
-   
+
 3、常见配置
 	https://prettier.io/docs/en/options.html
-	详细配置请查看项目内文件
+	详细配置查看项目内文件
 
 4、如何格式化
     // 格式化文件（./src 表示格式化 src 目录下的所有文件）
     npx prettier --write ./src
-    // 或先在 package.json 里配置 script. "prettier": "npx prettier --write ./src"
+    // 或先在 package.json 里配置 script -> "format": "prettier --write ./src"
     npm run prettier
     // 或 VSCode 中配置保存时自动格式化（不推荐）
-  
+
 
 1、可以在 VSCode 里配置保存的时候默认使用 Prettier 来格式化代码（这里我不启用保存格式化）
   参考：https://blog.csdn.net/bianliuzhu/article/details/123667127
@@ -266,7 +266,7 @@ trim_trailing_whitespace = false
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 
-2、VSCode 设置里也可以配置 Prettier 插件的格式化风格，如果项目里有配置文件，会优先用配置文件的，否则会使用设置里插件配置的
+2、VSCode 设置里也可以配置 Prettier 插件的格式化风格，如果项目里有配置文件，会优先用项目内的配置文件
 
 3、关于 .prettierignore 文件
    .prettierignore 基于.gitignore 和 .eslintignore（如果有的话）。所以如果把一个文件添加到了 .gitignore 或者.eslintignore 中，即使没有 .prettierignore 这个文件，那些文件也会被 Prettier 忽略。
@@ -281,9 +281,9 @@ trim_trailing_whitespace = false
 **基本配置**
 
 ```json
-1、安装 ESLint 插件
+1、VSCode 安装 ESLint 插件
 
-2、VSCode 设置里进行配置
+2、VSCode 设置里进行如下配置
 "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true // 启用 eslint 自动修复
 },
@@ -309,7 +309,6 @@ trim_trailing_whitespace = false
 
 1、安装 ESLint
    npm i eslint -D
-   局部安装的 eslint，需要通过 ./node_modules/.bin/eslint eslint xxx 或 npx eslint xxx 的形式使用
 
 2、支持 vue 项目
    npm i eslint-plugin-vue -D
@@ -318,32 +317,34 @@ trim_trailing_whitespace = false
    npm i @typescript-eslint/eslint-plugin -D
    npm i @typescript-eslint/parser -D
 
-4、支持 es6 模块化
+4、支持 es6 模块
    npm i eslint-plugin-import -D
 
-5、支持 defineConfig 函数形式定义配置，可以帮助我们做语法提示
+5、支持 defineConfig 函数形式定义配置，可以帮助做语法提示
    npm i eslint-define-config -D
 
 6、引入社区流行的 eslint 规则库
    npm i eslint-config-standard -D
 
-一键安装： npm i eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-import eslint-define-config eslint-config-standard -D
+一键安装：
+   npm i eslint eslint-plugin-vue @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-import eslint-define-config eslint-config-standard -D
 
-如果使用了 eslint-config-standard 这个规则库，eslint 不生效的话，还需要安装：
-  npm i eslint-plugin-promise eslint-plugin-n -D
+如果使用了 eslint-config-standard 这个规则库，并且 eslint 不生效的话，还需要安装：
+另外，eslint-plugin-node 和 eslint-plugin-n 是差不多的，随便装一个就行
+   npm i eslint-plugin-promise eslint-plugin-n -D
 ```
 
-在项目根目录下创建 `.eslintrc.js` 和 `.eslintignore`文件，vue 项目常用配置如下：
+在项目根目录下创建 `.eslintrc.js` 和 `.eslintignore` 文件，vue 项目常用配置如下：
 
 ```bash
 .eslintignore：
-    public
-    dist
-    build
-    tests
-    themes
-    node_modules
-    src/common/libs
+  node_modules/
+  public/
+  dist/
+  build/
+  test/
+  themes/
+  src/common/libs/
 
 .eslintrc.js 详细配置查看项目内文件
 ```
@@ -352,18 +353,22 @@ trim_trailing_whitespace = false
 
 **解决 Prettier 和 ESLint 的冲突**
 
-​	通常会在项目中同时使用 Prettier 和 ESLint 来保证代码规范，难免会存在规则冲突的情况。解决两者冲突的问题，需要用到 **eslint-plugin-prettier** 和 **eslint-config-prettier** 这两个 npm 包。
+​	通常会在项目中同时使用 Prettier 和 ESLint 来保证代码规范，难免会存在规则冲突的情况。解决两者冲突的问题，需要用到 **eslint-plugin-prettier** 和 **eslint-config-prettier** 这两个包。
 
-- `eslint-plugin-prettier`  将 Prettier 规则设置到 ESLint 的规则中
+- `eslint-plugin-prettier`  将 Prettier 规则设置到 ESLint 规则中
 - `eslint-config-prettier`  覆盖 ESLint 中与 Prettier 中会发生冲突的规则
 
 最后形成优先级，当有相同的配置项时：`Prettier 配置规则` > `ESLint 配置规则`
 
 ```javascript
  // 启用的规则，添加 plugin:prettier/recommended 规则，这样就会覆盖 ESLint 中相同的规则
- extends: ['plugin:vue/vue3-recommended', 'standard', 'plugin:prettier/recommended']
+ extends: [
+  'plugin:vue/vue3-recommended',
+  'standard',
+  'plugin:prettier/recommended'
+]
 
- 但是，这种方式并不是使用项目内 .prettierrc.js 文件的配置来覆盖，而是使用第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
+ 但是这种方式并不是使用项目内 .prettierrc.js 文件的配置来覆盖，而是使用第三方库的规则，如何使用项目内的配置来覆盖？暂时没找到解决办法。。。。。。
  最终，决定不使用这种办法，而是选择了把两者相同的配置项的值都改成一样的，这样就不会有冲突了！（推荐）
 ```
 

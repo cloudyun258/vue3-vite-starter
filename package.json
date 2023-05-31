@@ -7,8 +7,8 @@
     "dev:test": "cross-env NODE_ENV=test vite --mode test",
     "build": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "format": "npx prettier --write ./src",
-    "lint": "npx eslint --fix ./src",
+    "format": "prettier --write ./src",
+    "lint": "eslint --fix ./src",
     "prepare": "husky install"
   },
   "dependencies": {

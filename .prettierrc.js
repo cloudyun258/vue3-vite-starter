@@ -1,7 +1,8 @@
 // https://prettier.io/docs/en/options.html
+
 module.exports = {
-  // 一行最多 120 字符
-  printWidth: 120,
+  // 一行最多 160 字符
+  printWidth: 160,
   // 使用 2 个空格缩进
   tabWidth: 2,
   // 不使用缩进符，而使用空格
