@@ -42,7 +42,7 @@ export default defineConfig({
           在 main.js 或 App.vue 中全局导入 _variable.scss 和 _mixins.scss 文件是无效的，
           只能每个组件使用的时候都在内部导入，或者在这里通过 “additionalData” 属性配置全局导入
         */
-        additionalData: '@import "@/assets/styles/_variable.scss";'
+        additionalData: '@import "@/styles/_variable.scss";'
       }
     }
   }
