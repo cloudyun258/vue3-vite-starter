@@ -30,28 +30,31 @@
 
 ### 架构搭建
 
-本项目使用 Vite 作为构建工具，**需要 Node.js 版本 >= 12.0.0**
+项目使用 Vite 作为构建工具，**需要 Node.js 版本 >= 12.0.0**
 
 ```bash
 # 查看 Node.js 版本
    node -v
 # 使用 nvm 安装最新稳定版 Node.js
-   nvm install stable
+   nvm install lts
 ```
 
 
 
-**使用 Vite 快速初始化项目雏形**
+**使用 Vite 快速初始化项目**
 
 ```bash
 	提示：使用 vite 2.x 创建项目，不像 vue-cli 那样，可以在创建的时候选择 vue-router、vuex、sass、eslint、test 等工具，这些都需要后面自己手动安装
 
-# 使用 npm
+	现在官方更推荐使用 create-vue 工具来创建基于 vue3 + vite 的项目，这类似于 vue-cli
+
+
+	# 使用 npm
     npm init vite@latest
-# 使用 yarn
+	# 使用 yarn
 	yarn create vite
 
-# 还可以通过附加的命令行选项直接指定项目名和模板，本项目要构建 Vite + Vue3 + TypeScript 项目，则运行：
+	# 还可以通过附加的命令行选项直接指定项目名和模板，本项目要构建 Vite + Vue3 + TypeScript 项目，则运行：
     # npm 6.x
     npm init vite@latest vue3-vite-starter --template vue-ts
 
