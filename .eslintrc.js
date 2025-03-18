@@ -10,7 +10,7 @@ module.exports = defineConfig({
     node: true,
     es2021: true
   },
-  // 定义全局变量，防止报错
+  // 额外定义小程序环境的全局变量
   globals: {
     uni: true,
     wx: true,
