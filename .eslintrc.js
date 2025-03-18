@@ -15,7 +15,11 @@ module.exports = defineConfig({
     uni: true,
     wx: true,
     tt: true,
-    getCurrentPages: true
+    ks: true,
+    App: true,
+    Component: true,
+    getCurrentPages: true,
+    getApp: true
   },
   // 启用的规则
   extends: [
@@ -34,15 +38,16 @@ module.exports = defineConfig({
   plugins: ['vue', 'import', 'promise', 'n', '@typescript-eslint'],
   // 除了 extends 中启用的规则外，额外的自定义规则
   rules: {
-    semi: 'off',
-    indent: ['warn', 2],
-    'space-before-function-paren': 'off',
-    'func-call-spacing': 'off',
+    semi: ['warn', 'never'], // 不使用分号
+    indent: ['warn', 2], // 缩进为2
+    'space-before-function-paren': ['warn', 'never'], // 函数括号前不加空格
     'vue/html-self-closing': 'off',
     'vue/html-indent': [2, 2],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/multi-word-component-names': 'off',
-    'vue/require-explicit-emits': 'off'
+    'vue/require-explicit-emits': 'off',
+    '@typescript-eslint/no-explicit-any': 'off', // 允许使用 any 作为类型
+    '@typescript-eslint/no-unsafe-function-type': 'off' // 允许使用 Function 作为参数类型
   }
 })

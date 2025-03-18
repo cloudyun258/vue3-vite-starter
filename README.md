@@ -183,14 +183,13 @@ npm i sass -D
 ```bash
 # https://editorconfig.org
 
-[*.{js,jsx,ts,tsx,vue}]
-# charset = utf-8 # 文件编码
-indent_style = space # 缩进风格（tab | space）
+[*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,css,scss,json}]
+charset = utf-8 # 文件编码
 indent_size = 4 # 缩进大小
+indent_style = space # 缩进风格（tab | space）
 # end_of_line = lf # 控制换行类型（lf | cr | crlf）（保存时生效）
-trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 insert_final_newline = true # 始终在文件末尾插入一个新行（保存时生效）
-# max_line_length = 160 # 最大列数（需要 shift + alt + f 才生效，最大列数最好用 Prettier 来配置）
+trim_trailing_whitespace = true # 去除行首的任意空白字符（保存时生效）
 
 
 1、不需要修改 EditorConfig for VSCode 插件的配置，用默认的就行
