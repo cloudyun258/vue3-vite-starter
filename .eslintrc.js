@@ -17,6 +17,7 @@ module.exports = defineConfig({
     tt: true,
     ks: true,
     App: true,
+    Page: true,
     Component: true,
     getCurrentPages: true,
     getApp: true
