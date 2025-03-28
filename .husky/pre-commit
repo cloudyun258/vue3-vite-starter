@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# npx eslint --fix ./src --ext .vue,.js,.ts
+# npx eslint --fix ./src --ext .vue,.js,.jsx,.ts,.tsx
 npx lint-staged
