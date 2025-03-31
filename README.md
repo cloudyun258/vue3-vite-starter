@@ -341,13 +341,13 @@ trim_trailing_whitespace = false
 
 ```bash
 .eslintignore：
-  node_modules/
-  public/
-  dist/
-  build/
-  test/
-  themes/
-  src/common/libs/
+  node_modules
+  public
+  dist
+  build
+  test
+  themes
+  typings
 
 .eslintrc.js 详细配置查看项目内文件
 ```

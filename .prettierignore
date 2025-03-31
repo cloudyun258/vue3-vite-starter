@@ -4,4 +4,4 @@ dist
 build
 test
 themes
-src/common/libs
+typings
