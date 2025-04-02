@@ -7,7 +7,7 @@ import vue from '@vitejs/plugin-vue'
 */
 import path from 'path'
 
-console.log('项目运行环境（NODE_ENV）：', process.env.NODE_ENV)
+console.log('项目运行环境(NODE_ENV): ', process.env.NODE_ENV)
 
 /*
   https://vitejs.dev/config
