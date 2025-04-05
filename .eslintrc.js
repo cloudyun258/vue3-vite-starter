@@ -42,7 +42,14 @@ module.exports = defineConfig({
     semi: ['warn', 'never'], // 不使用分号
     indent: ['warn', 2], // 缩进为2
     quotes: ['warn', 'single'], // 字符串使用单引号
-    'space-before-function-paren': ['warn', 'never'], // 函数括号前不加空格
+    'space-before-function-paren': [
+        'warn',
+        {
+          anonymous: 'always', // 匿名函数可以有空格
+          named: 'never', // 命名函数不可以有空格
+          asyncArrow: 'always' // async 箭头函数可以有空格（可选）
+        }
+    ],
     'comma-dangle': ['warn', 'never'], // 对象和数组最后一项后面不能有逗号
     'vue/html-self-closing': 'off',
     'vue/html-indent': [2, 2],
