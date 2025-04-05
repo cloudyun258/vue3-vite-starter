@@ -41,6 +41,7 @@ module.exports = defineConfig({
   rules: {
     semi: ['warn', 'never'], // 不使用分号
     indent: ['warn', 2], // 缩进为2
+    quotes: ['warn', 'single'], // 字符串使用单引号
     'space-before-function-paren': ['warn', 'never'], // 函数括号前不加空格
     'comma-dangle': ['warn', 'never'], // 对象和数组最后一项后面不能有逗号
     'vue/html-self-closing': 'off',
