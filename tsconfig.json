@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
-    // 以下两行解决组件中 script 为 lang="ts" 时无法使用 vite.config.js 中配置的别名的问题
+    // 以下两行用于解决组件中 script 为 lang="ts" 时无法使用 vite.config.js 中配置的别名问题
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

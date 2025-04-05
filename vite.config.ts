@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 /*
-  1、如果提示 path 模块找不到，则可以安装一下 @types/node
+  1、如果提示 path 模块找不到，则需要安装 @types/node
   2、如果报错模块 path 只能在使用 “allowSyntheticDefaultImports“ 标志时进行默认导入，
-    则在 tsconfig.node.json 文件的 compilerOptions 对象里加上 "allowSyntheticDefaultImports": true
+    则在 tsconfig.node.json 文件的 compilerOptions 对象里加上配置 "allowSyntheticDefaultImports": true
 */
 import path from 'path'
 
@@ -39,7 +39,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         /*
-          在 main.js 或 App.vue 中全局导入 _variable.scss 和 _mixins.scss 文件是无效的，
+          在 main.ts 或 App.vue 中全局导入 _variable.scss 和 _mixins.scss 文件是无效的，
           只能每个组件使用的时候都在内部导入，或者在这里通过 “additionalData” 属性配置全局导入
         */
         additionalData: '@import "@/styles/_variable.scss";'
